@@ -7,7 +7,7 @@
  * DONE: Complete the showYouWon, showNumberAbove, showNumberBelow
  * DONE: Use the showYouWon... functions within displayResult to display the correct dialog
  * DONE: Save the guess history in a variable called guess
- * TODO: Display the guess history using displayHistory() function
+ * DONE: Display the guess history using displayHistory() function
  * TODO: Use the initGame() function to restart the game
  */
 
@@ -29,6 +29,7 @@ function playGame(){
   let numberGuess = document.querySelector("#number-guess").value;
   displayResult(numberGuess);
   saveGuessHistory(numberGuess);
+  displayHistory();
 }
 
 /**
@@ -76,9 +77,9 @@ function getRandomNumber(){
  * HINT: Search Google "append to array in javascript"
  * HINT: Use the guesses variable
  */
-function saveGuessHistory(guess) {
+function saveGuessHistory(numberGuess) {
   // *CODE GOES BELOW HERE *
-  guesses.push(guess)
+  guesses.push(numberGuess)
 }
 
 /**
@@ -93,6 +94,9 @@ function displayHistory() {
   let index; // TODO
   let list = "<ul class='list-group'>";
   // *CODE GOES BELOW HERE *
+  for (let i = guesses.length - 1; i >= 0; i--) {
+    list += `<li class='list-group-item'>You guessed ${guesses[i]}</li>`
+  }
   list += '</ul>'
   document.getElementById("history").innerHTML = list;
 }
